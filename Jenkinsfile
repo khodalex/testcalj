@@ -6,7 +6,8 @@ pipeline {
             steps {
                 // Клонируем репозиторий с вашим проектом
                 
-                git 'git@github.com:khodalex/testcalj.git'
+             git branch: 'main', url: 'git@github.com:khodalex/testcalj.git'
+
             }
         }
 
