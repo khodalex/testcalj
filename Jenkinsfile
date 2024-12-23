@@ -5,6 +5,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Клонируем репозиторий с вашим проектом
+                git branch: 'main',
                 git 'git@github.com:khodalex/testcalj.git'
             }
         }
