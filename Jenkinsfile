@@ -1,13 +1,17 @@
 pipeline {
     agent any
 
+    environment {
+        OPERATION = 'add'  // Устанавливаем операцию
+        NUM1 = '10'        // Устанавливаем первое число
+        NUM2 = '5'         // Устанавливаем второе число
+    }
+
     stages {
         stage('Clone Repository') {
             steps {
                 // Клонируем репозиторий с вашим проектом
-                
-             git branch: 'main', url: 'git@github.com:khodalex/testcalj.git'
-
+                git branch: 'main', url: 'git@github.com:khodalex/testcalj.git'
             }
         }
 
@@ -22,10 +26,12 @@ pipeline {
 
         stage('Run Docker Container') {
             steps {
-                // Запускаем Docker-контейнер
+                // Запускаем Docker-контейнер с передачей переменных окружения для выполнения операции
                 script {
                     docker.image('python-calculator').inside {
-                        sh 'python calculatorj.py'
+                        sh """
+                            python calculatorj.py ${OPERATION} ${NUM1} ${NUM2}
+                        """
                     }
                 }
             }
