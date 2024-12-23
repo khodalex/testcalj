@@ -25,7 +25,7 @@ pipeline {
                 // Запускаем Docker-контейнер
                 script {
                     docker.image('python-calculator').inside {
-                        sh 'python calculator.py'
+                        sh 'python calculatorj.py'
                     }
                 }
             }
