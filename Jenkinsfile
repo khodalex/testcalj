@@ -16,7 +16,7 @@ pipeline {
             }
         }
 
-   
+        
 
         stage('Build Docker Image') {
             steps {
@@ -32,8 +32,8 @@ pipeline {
                     // Копируем Dockerfile и проект на сервер, собираем и запускаем контейнер
                     sshagent(['8eb21d70-c6e9-4779-8c7d-79d98aafd274']) {
                         sh '''
-                        scp -r . mamange@10.0.0.130:/home/user/project
-                        ssh mamange@10.0.0.130 "cd /home/user/project && \
+                        scp -r . mamange@10.0.0.130:/home/manage/project
+                        ssh mamange@10.0.0.130 "cd /home/manage/project && \
                         docker build -t ${DOCKER_IMAGE} . && \
                         docker run --rm ${DOCKER_IMAGE} ${OPERATION} ${NUM1} ${NUM2}"
                         '''
