@@ -20,7 +20,7 @@ pipeline {
             steps {
                 // Запускаем тесты для проверки корректности кода
                 script {
-                    sh "python -m unittest discover -s tests"
+                   sh "python3 -m unittest discover -s tests"
                 }
             }
         }
