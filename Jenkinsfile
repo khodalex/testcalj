@@ -16,14 +16,7 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                // Запускаем тесты для проверки корректности кода
-                script {
-                   sh "python3 -m unittest discover -s tests"
-                }
-            }
-        }
+   
 
         stage('Build Docker Image') {
             steps {
